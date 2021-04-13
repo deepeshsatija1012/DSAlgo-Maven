@@ -9,6 +9,15 @@ import java.util.Random;
 
 public class SortingTest {
 
+    public boolean isSorted(Comparable[] a) {
+        for (int i = 1 ; i < a.length ; i++) {
+            if (a[i - 1].compareTo(a[i]) > 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private Integer[] getIntegerData() {
         Integer[] integerList = new Integer[10];
         Random random = new Random();
@@ -203,6 +212,69 @@ public class SortingTest {
         Assert.assertArrayEquals(integerListC, integerList);
         Assert.assertArrayEquals(doubleListC, doubleList);
         Assert.assertArrayEquals(stringListC, stringList);
+
+    }
+
+
+    @Test
+    public void quickSortUnstableTest() {
+        Integer[] integerList = getIntegerData();
+        Double[] doubleList = getDoubleData();
+        String[] stringList = getStringData();
+
+        Integer[] integerListC = SerializationUtils.clone(integerList);
+        Double[] doubleListC = SerializationUtils.clone(doubleList);
+        String[] stringListC = SerializationUtils.clone(stringList);
+
+        SortingUtils.quickSortUnstable(integerListC);
+        SortingUtils.quickSortUnstable(doubleListC);
+        SortingUtils.quickSortUnstable(stringListC);
+
+        Assert.assertTrue(isSorted(integerListC));
+        Assert.assertTrue(isSorted(doubleListC));
+        Assert.assertTrue(isSorted(stringListC));
+
+    }
+
+    @Test
+    public void quickSortStableTest() {
+        Integer[] integerList = getIntegerData();
+        Double[] doubleList = getDoubleData();
+        String[] stringList = getStringData();
+
+        Integer[] integerListC = SerializationUtils.clone(integerList);
+        Double[] doubleListC = SerializationUtils.clone(doubleList);
+        String[] stringListC = SerializationUtils.clone(stringList);
+
+        SortingUtils.quickSortStable(integerListC);
+        SortingUtils.quickSortStable(doubleListC);
+        SortingUtils.quickSortStable(stringListC);
+
+        Assert.assertTrue(isSorted(integerListC));
+        Assert.assertTrue(isSorted(doubleListC));
+        Assert.assertTrue(isSorted(stringListC));
+
+    }
+
+
+    @Test
+    public void heapSortTest() {
+        Integer[] integerList = new Integer[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+//        Double[] doubleList = getDoubleData();
+//        String[] stringList = getStringData();
+
+        Integer[] integerListC = SerializationUtils.clone(integerList);
+//        Double[] doubleListC = SerializationUtils.clone(doubleList);
+//        String[] stringListC = SerializationUtils.clone(stringList);
+
+        SortingUtils.shuffleArray(integerListC);
+        SortingUtils.heapSort(integerListC);
+//        SortingUtils.heapSort(doubleListC);
+//        SortingUtils.heapSort(stringListC);
+
+        Assert.assertTrue(isSorted(integerListC));
+//        Assert.assertTrue(isSorted(doubleListC));
+//        Assert.assertTrue(isSorted(stringListC));
 
     }
 }
