@@ -132,4 +132,77 @@ public class SortingTest {
 
     }
 
+
+    @Test
+    public void mergeSortWithCopyTest() {
+        Integer[] integerList = getIntegerData();
+        Double[] doubleList = getDoubleData();
+        String[] stringList = getStringData();
+
+        Integer[] integerListC = SerializationUtils.clone(integerList);
+        Double[] doubleListC = SerializationUtils.clone(doubleList);
+        String[] stringListC = SerializationUtils.clone(stringList);
+
+        SortingUtils.mergeSortWithCopy(integerListC);
+        SortingUtils.mergeSortWithCopy(doubleListC);
+        SortingUtils.mergeSortWithCopy(stringListC);
+
+        Arrays.sort(integerList);
+        Arrays.sort(doubleList);
+        Arrays.sort(stringList);
+
+        Assert.assertArrayEquals(integerListC, integerList);
+        Assert.assertArrayEquals(doubleListC, doubleList);
+        Assert.assertArrayEquals(stringListC, stringList);
+
+    }
+
+    @Test
+    public void mergeSortWithoutCopyTest() {
+        Integer[] integerList = getIntegerData();
+        Double[] doubleList = getDoubleData();
+        String[] stringList = getStringData();
+
+        Integer[] integerListC = SerializationUtils.clone(integerList);
+        Double[] doubleListC = SerializationUtils.clone(doubleList);
+        String[] stringListC = SerializationUtils.clone(stringList);
+
+        SortingUtils.mergeSortWithoutCopy(integerListC);
+        SortingUtils.mergeSortWithoutCopy(doubleListC);
+        SortingUtils.mergeSortWithoutCopy(stringListC);
+
+        Arrays.sort(integerList);
+        Arrays.sort(doubleList);
+        Arrays.sort(stringList);
+
+        Assert.assertArrayEquals(integerListC, integerList);
+        Assert.assertArrayEquals(doubleListC, doubleList);
+        Assert.assertArrayEquals(stringListC, stringList);
+
+    }
+
+
+    @Test
+    public void bottomUpMergeSortWithoutCopyTest() {
+        Integer[] integerList = getIntegerData();
+        Double[] doubleList = getDoubleData();
+        String[] stringList = getStringData();
+
+        Integer[] integerListC = SerializationUtils.clone(integerList);
+        Double[] doubleListC = SerializationUtils.clone(doubleList);
+        String[] stringListC = SerializationUtils.clone(stringList);
+
+        SortingUtils.bottomUpMergeSort(integerListC);
+        SortingUtils.bottomUpMergeSort(doubleListC);
+        SortingUtils.bottomUpMergeSort(stringListC);
+
+        Arrays.sort(integerList);
+        Arrays.sort(doubleList);
+        Arrays.sort(stringList);
+
+        Assert.assertArrayEquals(integerListC, integerList);
+        Assert.assertArrayEquals(doubleListC, doubleList);
+        Assert.assertArrayEquals(stringListC, stringList);
+
+    }
 }
