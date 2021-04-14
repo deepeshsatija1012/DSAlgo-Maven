@@ -1,9 +1,8 @@
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 import org.junit.Test;
-import search.BinarySearch;
+import symboltable.BinarySearch;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class BinarySearchTest {
@@ -40,11 +39,11 @@ public class BinarySearchTest {
         Integer[] integerList = new Integer[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         BinarySearch<Integer, Integer> search = new BinarySearch<>(integerList, integerList);
 
-        Assert.assertTrue(search.findIndex(2) == 2);
-        Assert.assertTrue(search.findIndex(-2) == 0);
+        Assert.assertTrue(search.rank(2) == 2);
+        Assert.assertTrue(search.rank(-2) == 0);
 
-        Assert.assertTrue(search.findIndex(10) == 10);
-        Assert.assertTrue(search.findIndex(11) == 10);
+        Assert.assertTrue(search.rank(10) == 10);
+        Assert.assertTrue(search.rank(11) == 10);
     }
 
 

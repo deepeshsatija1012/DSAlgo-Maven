@@ -1,4 +1,4 @@
-package search;
+package symboltable;
 
 public class BinarySearch<Key extends Comparable<Key>, Value> {
     private Key[] keys;
@@ -27,7 +27,7 @@ public class BinarySearch<Key extends Comparable<Key>, Value> {
         keys = tempk;
     }
 
-    public int findIndex(Key key) {
+    public int rank(Key key) {
         int lo = 0, hi = n - 1;
         while (lo <= hi) {
             int mid = lo + ( (hi-lo)/2 );
@@ -40,13 +40,13 @@ public class BinarySearch<Key extends Comparable<Key>, Value> {
     }
 
     public Value get(Key key) {
-        int i = findIndex(key);
+        int i = rank(key);
         if (i < n && key.compareTo(keys[i]) == 0) return values[i];
         return null;
     }
 
     public void addKey(Key key, Value value) {
-        int i = findIndex(key);
+        int i = rank(key);
         if (i < n && keys[i].compareTo(key) == 0) {
             values[i] = value;
             return;
